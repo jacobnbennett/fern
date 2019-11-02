@@ -14,7 +14,7 @@ namespace FernNamespace
 
         private Graphics graphics;
 
-        /* 
+        /* hadsjbg d7yusagfduyg
          * Fern constructor erases screen and draws a fern
          * 
          * Size: number of 3-pixel segments of tendrils
