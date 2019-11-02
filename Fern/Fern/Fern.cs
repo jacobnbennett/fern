@@ -30,13 +30,14 @@ namespace FernNamespace
             double angle = Convert.ToDouble(90 * Math.PI / 180);
             double offset = Convert.ToDouble(rnd.Next(-10,11) * Math.PI / 180);
             double length = Math.Sqrt(Math.Pow((300 - 300), 2) + (Math.Pow((200 - 500), 2)));
-            branch(300, 500, 300, 200, length * size / 1.5, redux , angle, turnBias, offset, graphics);
+            int thick = rnd.Next(1, 4);
+            branch(300, 500, 300, 200, length * size / 1.5, redux , angle, turnBias, offset, thick, graphics);
         }
 
-        private void branch(int x1, int y1, int x2, int y2, double length, double redux, double theta, double turnBias, double offset, Graphics graphics) {
+        private void branch(int x1, int y1, int x2, int y2, double length, double redux, double theta, double turnBias, double offset, int thick, Graphics graphics) {
             Random rnd = new Random();
             
-            Pen penny = new Pen(Color.FromArgb((byte)rnd.Next(0, 255), (byte)rnd.Next(0, 255), (byte)rnd.Next(0, 255)), 2); // Color.green
+            Pen penny = new Pen(Color.FromArgb((byte)rnd.Next(0, 255), (byte)rnd.Next(0, 255), (byte)rnd.Next(0, 255)), thick); // Color.green 
             //int x = x2;
             //int y = y2;
             
@@ -48,13 +49,14 @@ namespace FernNamespace
             //double length = Math.Sqrt(Math.Pow((x2 - x1), 2) + (Math.Pow((y2 - y1), 2)));          
             
             graphics.DrawLine(penny, x1, y1, nx, ny);
+
            
             if (redux > 0){
                 
                 int nx2 = Convert.ToInt32(x2 + nlength * Math.Cos(theta));
                 int ny2 = Convert.ToInt32(y2 - nlength * Math.Sin(theta));
-                branch(nx, ny, nx2, ny2, nlength, redux - 0.1, theta + turnBias + 2 * offset, turnBias, offset, graphics);
-                branch(nx, ny, nx2, ny2, nlength, redux - 0.1, theta - turnBias + 2 * offset, turnBias, offset, graphics);
+                branch(nx, ny, nx2, ny2, nlength, redux - 0.1, theta + turnBias + 2 * offset, turnBias, offset, thick, graphics);
+                branch(nx, ny, nx2, ny2, nlength, redux - 0.1, theta - turnBias + 2 * offset, turnBias, offset, thick, graphics);
 
                 //branch();
             }
