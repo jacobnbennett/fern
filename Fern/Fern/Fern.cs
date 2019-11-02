@@ -26,19 +26,35 @@ namespace FernNamespace
         {
             Rectangle r = new Rectangle(0, 0, 200, 100);
             graphics.DrawRectangle(new Pen(Color.Red, 2), r); 
-            branch(300, 400, 300, 300, 0.34, graphics);
+            
+            Random rnd = new Random();
+            double angle = Convert.ToDouble(90 * Math.PI / 180);
+            double length = Math.Sqrt(Math.Pow((300 - 300), 2) + (Math.Pow((200 - 600), 2)));
+            branch(300, 600, 300, 200, length * size, redux, angle, graphics);
         }
 
-        private void branch(int x1, int y1, int x2, int y2, double dtheta, Graphics graphics) {
+        private void branch(int x1, int y1, int x2, int y2, double length, double redux, double theta, Graphics graphics) {
             Pen penny = (new Pen(Color.Green, 2));
-            graphics.DrawLine(penny, x1, y1, x2, y2);
-            double length = Math.Sqrt(Math.Pow((x2 - x1), 2) + (Math.Pow((y2 - y1), 2)));
-            int nx = (x1 + length * Math.Cos(dtheta));
-            int ny = (y1 + length * Math.Sin(dtheta));
+            int x = x2;
+            int y = y2;
+            
+            double nlength = length / 2;
+            int nx = Convert.ToInt32(x1 + length * Math.Cos(theta));
+            int ny = Convert.ToInt32(y1 - length * Math.Sin(theta));
 
-            if (redux > 1){
-                branch();
-                branch();
+            
+            //double length = Math.Sqrt(Math.Pow((x2 - x1), 2) + (Math.Pow((y2 - y1), 2))); redtw
+            
+            graphics.DrawLine(penny, x1, y1, nx, ny);
+           
+            if (redux > 0.1){
+                
+                nx = Convert.ToInt32(x2 + nlength * Math.Cos(theta));
+                ny = Convert.ToInt32(y2 + nlength * Math.Sin(theta));
+                branch(x, y, nx, ny, nlength, redux - 0.1, theta + 10, graphics);
+                branch(x, y, nx, ny, nlength, redux - 0.1, theta - 10, graphics);
+
+                //branch();
             }
             //graphics.DrawCurve(penny, )
         }
