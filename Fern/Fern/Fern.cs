@@ -45,7 +45,7 @@ namespace FernNamespace
             int ny = Convert.ToInt32(y1 - length * Math.Sin(theta));
 
             
-            //double length = Math.Sqrt(Math.Pow((x2 - x1), 2) + (Math.Pow((y2 - y1), 2))); redtw    
+            //double length = Math.Sqrt(Math.Pow((x2 - x1), 2) + (Math.Pow((y2 - y1), 2)));        
             
             graphics.DrawLine(penny, x1, y1, nx, ny);
            
