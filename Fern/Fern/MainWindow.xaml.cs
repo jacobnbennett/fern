@@ -37,7 +37,9 @@ namespace FernNamespace
             using (Graphics g = Graphics.FromImage(_canvas))
             {
                 g.Clear(System.Drawing.Color.White);
-                Fern f = new Fern(directionFallOffSlider.Value, lengthFallOffSlider.Value, turnSlider.Value, g, (int) this.Width, (int) this.Height);
+
+                //changed this fgsfed
+                Fern f = new Fern(size.Value, redux.Value, Turnbias.Value, g, (int) this.Width, (int) this.Height);
 
                 BitmapImage bitmapImage = new BitmapImage();
                 bitmapImage.BeginInit();
@@ -48,7 +50,6 @@ namespace FernNamespace
                 bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
                 bitmapImage.EndInit();
                 CanvasImage.Source = bitmapImage;
-                // smuggie
             }
         }
 
