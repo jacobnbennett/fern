@@ -48,6 +48,7 @@ namespace FernNamespace
                 bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
                 bitmapImage.EndInit();
                 CanvasImage.Source = bitmapImage;
+                // smuggie
             }
         }
 
