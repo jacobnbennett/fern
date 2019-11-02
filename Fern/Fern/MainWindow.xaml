@@ -5,10 +5,11 @@
     <Grid Background="#FFF4FFD8">
 
         <Image x:Name="CanvasImage" Margin="192,10,10,10">
-            <Image.Source>
+            <Image.Source >
                 <BitmapImage DecodePixelWidth="200" UriSource="Flower.jpg" />
-            </Image.Source>
+            </Image.Source >
         </Image>
+   
 
         
         <Slider Height="24" HorizontalAlignment="Left" Margin="12,85,0,0" Name="size" VerticalAlignment="Top" Width="175" Value="0.5" Maximum="1.0" Minimum="0.0" />

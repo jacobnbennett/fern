@@ -7,7 +7,7 @@ namespace FernNamespace
      * this class draws a fractal fern when the constructor is called.
      * Written as sample C# code for a CS 212 assignment -- October 2011.
      * 
-     * Bugs: WPF and shape objects are the wrong tool for the task 
+     * Bugs: WPF and shape objects are the wrong tool for the task  ff
      */
     class Fern
     {
@@ -36,7 +36,7 @@ namespace FernNamespace
         private void branch(int x1, int y1, int x2, int y2, double length, double redux, double theta, double turnBias, double offset, Graphics graphics) {
             Random rnd = new Random();
             
-            Pen penny = (new Pen(Color.FromArgb((byte)rnd.Next(0, 255), (byte)rnd.Next(0, 255), (byte)rnd.Next(0, 255)), 2)); // Color.green
+            Pen penny = new Pen(Color.FromArgb((byte)rnd.Next(0, 255), (byte)rnd.Next(0, 255), (byte)rnd.Next(0, 255)), 2); // Color.green
             //int x = x2;
             //int y = y2;
             
@@ -60,8 +60,8 @@ namespace FernNamespace
             }
 
             else {
-
-                graphics.DrawEllipse(penny, nx, ny, Convert.ToInt32(length), Convert.ToInt32(length));
+                float berry = Convert.ToInt32(length);
+                graphics.DrawEllipse(penny, nx - berry/2, ny - berry, berry, berry);
             }
 
             //graphics.DrawCurve(penny, )
