@@ -20,18 +20,26 @@ namespace FernNamespace
          * Size: number of 3-pixel segments of tendrils
          * Redux: how much smaller children clusters are compared to parents
          * Turnbias: how likely to turn right vs. left (0=always left, 0.5 = 50/50, 1.0 = always right)
-         * canvas: the canvas that the fern will be drawn on  
+         * canvas: the canvas that the fern will be drawn on   rjwhreiu  e dsge 
          */
-        public Fern(double directionFallOff, double lengthFallOff, double turnBias, Graphics graphics, int width, int height)
+        public Fern(double size, double redux, double turnBias, Graphics graphics, int width, int height)
         {
             Rectangle r = new Rectangle(0, 0, 200, 100);
             graphics.DrawRectangle(new Pen(Color.Red, 2), r); 
-            branch(0, 0, 100, 100, graphics);
+            branch(300, 400, 300, 300, 0.34, graphics);
         }
 
-        private void branch(int x1, int y1, int x2, int y2, Graphics graphics) {
+        private void branch(int x1, int y1, int x2, int y2, double dtheta, Graphics graphics) {
             Pen penny = (new Pen(Color.Green, 2));
             graphics.DrawLine(penny, x1, y1, x2, y2);
+            double length = Math.Sqrt(Math.Pow((x2 - x1), 2) + (Math.Pow((y2 - y1), 2)));
+            int nx = (x1 + length * Math.Cos(dtheta));
+            int ny = (y1 + length * Math.Sin(dtheta));
+
+            if (redux > 1){
+                branch();
+                branch();
+            }
             //graphics.DrawCurve(penny, )
         }
     }
