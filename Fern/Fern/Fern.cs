@@ -36,7 +36,7 @@ namespace FernNamespace
         private void branch(int x1, int y1, int x2, int y2, double length, double redux, double theta, double turnBias, double offset, Graphics graphics) {
             Random rnd = new Random();
             
-            Pen penny = (new Pen(Color.FromArgb((byte)rnd.Next(0, 255), (byte)rnd.Next(0, 255), (byte)rnd.Next(0, 255)), 2));
+            Pen penny = (new Pen(Color.FromArgb((byte)rnd.Next(0, 255), (byte)rnd.Next(0, 255), (byte)rnd.Next(0, 255)), 2)); // Color.green
             //int x = x2;
             //int y = y2;
             
@@ -45,7 +45,7 @@ namespace FernNamespace
             int ny = Convert.ToInt32(y1 - length * Math.Sin(theta));
 
             
-            //double length = Math.Sqrt(Math.Pow((x2 - x1), 2) + (Math.Pow((y2 - y1), 2)));        
+            //double length = Math.Sqrt(Math.Pow((x2 - x1), 2) + (Math.Pow((y2 - y1), 2)));          
             
             graphics.DrawLine(penny, x1, y1, nx, ny);
            
@@ -61,6 +61,7 @@ namespace FernNamespace
 
             else {
 
+                graphics.DrawEllipse(penny, nx, ny, Convert.ToInt32(length), Convert.ToInt32(length));
             }
 
             //graphics.DrawCurve(penny, )
