@@ -19,7 +19,7 @@ namespace FernNamespace
          * 
          * Size: number of 3-pixel segments of tendrils
          * Redux: how much smaller children clusters are compared to parents
-         * Turnbias: how likely to turn right vs. left (0=always left, 0.5 = 50/50, 1.0 = always right)
+         * Turnbias: how likely to turn right vs. left (0=always left, 0.5 = 50/50, 1.0 = always right) 
          * canvas: the canvas that the fern will be drawn on   rjwhreiu  e dsge     
          */
         public Fern(double size, double redux, double turnBias, Graphics graphics, int width, int height)
@@ -30,7 +30,7 @@ namespace FernNamespace
             double angle = Convert.ToDouble(90 * Math.PI / 180);
             double offset = Convert.ToDouble(rnd.Next(-10,11) * Math.PI / 180);
             double length = Math.Sqrt(Math.Pow((300 - 300), 2) + (Math.Pow((200 - 500), 2)));
-            int thick = rnd.Next(1, 4);
+            int thick = rnd.Next(2, 7);
             branch(300, 500, 300, 200, length * size / 1.5, redux , angle, turnBias, offset, thick, graphics);
         }
 
@@ -55,8 +55,8 @@ namespace FernNamespace
                 
                 int nx2 = Convert.ToInt32(x2 + nlength * Math.Cos(theta));
                 int ny2 = Convert.ToInt32(y2 - nlength * Math.Sin(theta));
-                branch(nx, ny, nx2, ny2, nlength, redux - 0.1, theta + turnBias + 2 * offset, turnBias, offset, thick, graphics);
-                branch(nx, ny, nx2, ny2, nlength, redux - 0.1, theta - turnBias + 2 * offset, turnBias, offset, thick, graphics);
+                branch(nx, ny, nx2, ny2, nlength, redux - 0.1, theta + turnBias + 2 * offset, turnBias, offset, thick - 1, graphics);
+                branch(nx, ny, nx2, ny2, nlength, redux - 0.1, theta - turnBias + 2 * offset, turnBias, offset, thick - 1, graphics);
 
                 //branch();
             }
